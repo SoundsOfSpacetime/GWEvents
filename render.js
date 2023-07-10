@@ -12,9 +12,9 @@
 'use strict'
 
 // Timer needed in order to make page load before alert shows
-//let myTimer = setTimeout(headphoneAlert, 10);
+
 function headphoneAlert() {
-    window.alert("Headphones are recommended for the best user experience. Cellphone and laptops may not be able to produce frequencies near 90 Hz.");
+    window.alert("Headphones are recommended for the best user experience. Cellphone and laptop speakers may not be able to produce low frequencies.");
 }
 
 //=============================================================================//
@@ -82,56 +82,59 @@ function updateFunction(normalizedStrainData) {
     console.log(data.length);
     
     // ------------------------ Information Box ------------------------ //
+    var numSigFigs = 3; //rounds all values to this number of significant figures
+
     // Mass #1:
     var mass1 = GWevents[selectGWEvent.selectedIndex].mass1;
-    document.getElementById('mass1').innerHTML = mass1;
+    document.getElementById('mass1').innerHTML = Number(mass1.toPrecision(numSigFigs));
 
-    var spin1x = GWevents[selectGWEvent.selectedIndex].spin1x;
-    document.getElementById('spin1x').innerHTML = spin1x;
+    // var spin1x = GWevents[selectGWEvent.selectedIndex].spin1x;
+    // document.getElementById('spin1x').innerHTML = Number(spin1x.toPrecision(numSigFigs));
 
-    var spin1y = GWevents[selectGWEvent.selectedIndex].spin1y;
-    document.getElementById('spin1y').innerHTML = spin1y;
+    // var spin1y = GWevents[selectGWEvent.selectedIndex].spin1y;
+    // document.getElementById('spin1y').innerHTML = Number(spin1y.toPrecision(numSigFigs));
 
-    var spin1z = GWevents[selectGWEvent.selectedIndex].spin1z;
-    document.getElementById('spin1z').innerHTML = spin1z;
+    // var spin1z = GWevents[selectGWEvent.selectedIndex].spin1z;
+    // document.getElementById('spin1z').innerHTML = Number(spin1z.toPrecision(numSigFigs));
 
     // Mass #2:
     var mass2 = GWevents[selectGWEvent.selectedIndex].mass2;
-    document.getElementById('mass2').innerHTML = mass2;
+    document.getElementById('mass2').innerHTML = Number(mass2.toPrecision(numSigFigs));
 
-    var spin2x = GWevents[selectGWEvent.selectedIndex].spin2x;
-    document.getElementById('spin2x').innerHTML = spin2x;
+    // var spin2x = GWevents[selectGWEvent.selectedIndex].spin2x;
+    // document.getElementById('spin2x').innerHTML = Number(spin2x.toPrecision(numSigFigs));
 
-    var spin2y = GWevents[selectGWEvent.selectedIndex].spin2y;
-    document.getElementById('spin2y').innerHTML = spin2y;
+    // var spin2y = GWevents[selectGWEvent.selectedIndex].spin2y;
+    // document.getElementById('spin2y').innerHTML = Number(spin2y.toPrecision(numSigFigs));
 
-    var spin2z = GWevents[selectGWEvent.selectedIndex].spin2z;
-    document.getElementById('spin2z').innerHTML = spin2z;
+    // var spin2z = GWevents[selectGWEvent.selectedIndex].spin2z;
+    // document.getElementById('spin2z').innerHTML = Number(spin2z.toPrecision(numSigFigs));
 
     // Other Parameters:
-    var rightAscension = GWevents[selectGWEvent.selectedIndex].rightAscension;
-    document.getElementById('rightAscension').innerHTML = rightAscension;
+    // var rightAscension = GWevents[selectGWEvent.selectedIndex].rightAscension;
+    // document.getElementById('rightAscension').innerHTML = Number(rightAscension.toPrecision(numSigFigs));
 
-    var declination = GWevents[selectGWEvent.selectedIndex].declination;
-    document.getElementById('declination').innerHTML = declination;
+    // var declination = GWevents[selectGWEvent.selectedIndex].declination;
+    // document.getElementById('declination').innerHTML = Number(declination.toPrecision(numSigFigs));
 
-    var inclination = GWevents[selectGWEvent.selectedIndex].inclination;
-    document.getElementById('inclination').innerHTML = inclination;
+    // var inclination = GWevents[selectGWEvent.selectedIndex].inclination;
+    // document.getElementById('inclination').innerHTML = Number(inclination.toPrecision(numSigFigs));
 
-    var psi = GWevents[selectGWEvent.selectedIndex].psi;
-    document.getElementById('psi').innerHTML = psi;
+    // var psi = GWevents[selectGWEvent.selectedIndex].psi;
+    // document.getElementById('psi').innerHTML = Number(psi.toPrecision(numSigFigs));
 
     var luminosityDistance = GWevents[selectGWEvent.selectedIndex].luminosityDistance;
-    document.getElementById('luminosityDistance').innerHTML = luminosityDistance;
+    document.getElementById('luminosityDistance').innerHTML = Number(luminosityDistance.toPrecision(numSigFigs));
 
     var chi_eff = GWevents[selectGWEvent.selectedIndex].chi_eff;
-    document.getElementById('chi_eff').innerHTML = chi_eff;
+    document.getElementById('chi_eff').innerHTML = Number(chi_eff.toPrecision(numSigFigs));
 
     var totalMass = GWevents[selectGWEvent.selectedIndex].totalMass;
-    document.getElementById('totalMass').innerHTML = totalMass;
+    document.getElementById('totalMass').innerHTML = Number(totalMass.toPrecision(numSigFigs));
 
     var geocentricGPSTime = GWevents[selectGWEvent.selectedIndex].geocentricGPSTime;
     document.getElementById('geocentricGPSTime').innerHTML = geocentricGPSTime;
+    // document.getElementById('geocentricGPSTime').innerHTML = Number(geocentricGPSTime.toPrecision(numSigFigs));
 
     // Event URL:
     var eventURL = GWevents[selectGWEvent.selectedIndex].url;

@@ -104,32 +104,29 @@
     <!-- Draw Plot -->
     <div id="strainVsTimePlot" class="plot"></div><br>
 
-    <!-- Information Box -->
-    <div id="infoBox" class="infoBox">
-      <!-- Mass #1: -->
-      <b><u>Mass #1</u>:</b> <div id="mass1"></div></br>
-      <b><u>Spin 1x</u>:</b> <div id="spin1x"></div></br>
-      <b><u>Spin 1y</u>:</b> <div id="spin1y"></div></br>
-      <b><u>Spin 1z</u>:</b> <div id="spin1z"></div></br>
-
-      <!-- Mass #2: -->
-      <b><u>Mass #2</u>:</b> <div id="mass2"></div></br>
-      <b><u>Spin 2x</u>:</b> <div id="spin2x"></div></br>
-      <b><u>Spin 2y</u>:</b> <div id="spin2y"></div></br>
-      <b><u>Spin 2z</u>:</b> <div id="spin2z"></div></br>
-      
-      <!-- Other Parameters:-->
-      <b><u>Right Ascension</u>:</b> <div id="rightAscension"></div></br>
-      <b><u>Declination</u>:</b> <div id="declination"></div></br>
-      <b><u>Inclination</u>:</b> <div id="inclination"></div></br>
-      <b><u>Psi</u>:</b> <div id="psi"></div></br>
-      <b><u>Luminosity Distance</u>:</b> <div id="luminosityDistance"></div></br>
-      <b><u>Chi Effective</u>:</b> <div id="chi_eff"></div></br>
-      <b><u>Total Mass</u>:</b> <div id="totalMass"></div></br>
-      <b><u>Geocentric GPS Time</u>:</b> <div id="geocentricGPSTime"></div></br>
-
-      <a href="https://www.gw-openscience.org/eventapi/html/GWTC-3-confident/GW191113_071753/v1" id="infoURL" target="_blank">Click for more information about this event</a>
-    </div><br>
+    <!-- Information Table -->
+    <table class="infoTable">
+      <tr>
+        <!-- Information Link -->
+        <th colspan="6"><h2><a href="https://www.gw-openscience.org/eventapi/html/GWTC-3-confident/GW191113_071753/v1" id="infoURL" target="_blank">Click to View More Information About This Event</a></h2></th>
+      </tr>
+      <tr>
+        <td>Mass #1</td>
+        <td>Mass #2</td>
+        <td>Total Mass</td>
+        <td>Luminosity</br>Distance</td>
+        <td>Chi Effective</td>
+        <td>Geocentric GPS Time</td>
+      </tr>
+      <tr>
+        <td><div id="mass1"></div> M<sub>☉</sub></td>
+        <td><div id="mass2"></div> M<sub>☉</sub></td>
+        <td><div id="totalMass"></div> M<sub>☉</sub></td>
+        <td><div id="luminosityDistance"></div></td>
+        <td><div id="chi_eff"></div></td>
+        <td><div id="geocentricGPSTime"></div></td>
+      </tr>
+    </table></br>
 
     <!-- Description Box -->
     <div id="descriptionBox">
@@ -144,6 +141,7 @@
     <!-- Bottom Bar -->
     <div id="credits">Created by <a href="https://www.linkedin.com/in/kevin-johansmeyer/" target="_blank">Kevin Johansmeyer</a> as part of <a href="https://www.montclair.edu/physics-astronomy/" target="_blank">Montclair State University</a> and the <a href="https://www.ligo.org/" target="_blank">LIGO Scientific Collaboration</a></div>
       
+
     <script src="render.js"></script>
          
   </body>
