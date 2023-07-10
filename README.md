@@ -1,4 +1,4 @@
-# SoundsOfSpacetimeApplication
+# Sounds of Spacetime - Gravitational Wave Events
 
 This is an in-progress application for Soundsofspacetime.org
 
