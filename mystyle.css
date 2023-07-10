@@ -35,6 +35,12 @@ body {
   background-color: #303030;
 }
 
+p {
+  color: white;
+  line-height: 100%;
+  font-size: 11px;
+}
+
 /* unvisited link */
 a:link {
   color: white;
@@ -48,7 +54,7 @@ a:visited {
 /* Sidebar Text */
 #sideBarSubheading {
   color: white;
-  font-size: 0.5em;
+  font-size: medium;
   text-align: center;
   font-family: "Lucida Handwriting","Arvo";
 }
@@ -116,21 +122,7 @@ a:visited {
   background-color: #444;
 }
 
-/* ------------------------------ Info Box ------------------------------ */
-
-/* Can remove, changed to infoTable */
-.infoBox {
-  border: 3px solid white;
-  /* text-align: center; */
-  background-color: #3d3d3d;
-  /* column-width: 250px; */
-  column-width: 150px;
-  padding: 10px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-}
+/* ------------------------------ Info Table ------------------------------ */
 
 .infoTable, th, td {
   table-layout: fixed;
@@ -204,11 +196,11 @@ a:visited {
 /* The side navigation menu */
 .sidenav {
   height: 100%; /* 100% Full-height */
-  width: 400px; /* 0 width - change this with JavaScript */
+  width: 500px; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
-  left: -400px;
+  left: -500px;
   /* background:rgba(75,156,211,0.9) url('../img/unc_pine_cb.svg') no-repeat; */
   /* background: #212121 url('../img/unc_pine_cb.svg') no-repeat; */
   background:rgba(33,33,33,0.9);
@@ -250,7 +242,19 @@ a.sidenav:nth(1) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
-  
+
+.sidebarBox {
+  border: 3px solid white;
+  /* Hexadecimal #3d3d3d is the same as RGB(61,61,61). RGBA used to change opacity. */
+  background-color: rgba(61,61,61,0.5);
+  text-align: center;
+  padding: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  line-height: 40%;
+}
 /* -------------------------------- Bottom Bar ------------------------------- */
 #credits { 
   text-align: center;

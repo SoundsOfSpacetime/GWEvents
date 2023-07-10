@@ -275,7 +275,7 @@ function openNav() {
 
 /* Set the width of the side navigation to 0 */
 function closeNav() {
-    document.getElementById("mySideNav").style.left = "-400px";
+    document.getElementById("mySideNav").style.left = "-500px";
 }
 
 // ------------------ Execute update Function for initial time ------------------ //
