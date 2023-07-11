@@ -4,6 +4,8 @@ Our purpose is to explore the physics of gravitational waves via an analogy to a
 
 # Sonification of Gravitational Wave Events
 
+![GW Application Screenshot](https://i.imgur.com/XL4KvWJ.png)
+
 ## Instructions
 
 1. Go to the [Sounds of Spacetime - Gravitational Wave Events](soundsofspacetime.github.io/GWEvents/) simulation. Google Chrome is highly recommended.
