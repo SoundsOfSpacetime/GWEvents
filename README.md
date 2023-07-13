@@ -1,6 +1,6 @@
 # Sounds of Spacetime - [soundsofspacetime.org]()
 
-Our purpose is to explore the physics of gravitational waves via an analogy to audible sounds. Gravitational waves (GW) are ripples in the fabric of spacetime produced by colliding black holes, neutron stars, supernovae, and other astrophysical phenomena. This application is intended to make the exploration of gravitational waves as accessible as possible.
+TEST Our purpose is to explore the physics of gravitational waves via an analogy to audible sounds. Gravitational waves (GW) are ripples in the fabric of spacetime produced by colliding black holes, neutron stars, supernovae, and other astrophysical phenomena. This application is intended to make the exploration of gravitational waves as accessible as possible.
 
 # Sonification of Gravitational Wave Events
 
