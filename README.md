@@ -1,4 +1,4 @@
-# Sounds of Spacetime - [soundsofspacetime.org]()
+# Sounds of Spacetime - [soundsofspacetime.org](https://soundsofspacetime.org/)
 
 Our purpose is to explore the physics of gravitational waves via an analogy to audible sounds. Gravitational waves (GW) are ripples in the fabric of spacetime produced by colliding black holes, neutron stars, supernovae, and other astrophysical phenomena. This application is intended to make the exploration of gravitational waves as accessible as possible.
 
@@ -8,7 +8,7 @@ Our purpose is to explore the physics of gravitational waves via an analogy to a
 
 ## Instructions
 
-1. Go to the [Sounds of Spacetime - Gravitational Wave Events](soundsofspacetime.github.io/GWEvents/) simulation. Google Chrome is highly recommended.
+1. Go to the [Sounds of Spacetime - Gravitational Wave Events](https://soundsofspacetime.github.io/GWEvents/) simulation. Google Chrome is highly recommended.
 2. Enable sound on your device. Use of headphones is highly recommended. 
 3. Use the "Event" dropdown menu to choose an gravitational wave detection. Each event has a label corresponding to the time and date of observation.
 
