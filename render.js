@@ -11,8 +11,7 @@
 
 'use strict'
 
-// Timer needed in order to make page load before alert shows
-
+// Timer needed in order to make page load before alert shows:
 function headphoneAlert() {
     window.alert("Headphones are recommended for the best user experience. Cellphone and laptop speakers may not be able to produce low frequencies.");
 }
@@ -21,7 +20,8 @@ function headphoneAlert() {
 // ------------------------- Populate Dropdown Menu -------------------------- //
 //=============================================================================//
 
-// // Citation: https://1bestcsharp.blogspot.com/2017/03/javascript-populate-select-option-from-array.html
+// Original working dropdown menu:
+// Citation: https://1bestcsharp.blogspot.com/2017/03/javascript-populate-select-option-from-array.html
 var select = document.getElementById("selectGWEvent");
 for(var j = 1; j < GWevents.length; j++) { //j = 1 since j = 0 already in dropdown by default
     var option = document.createElement("OPTION"),
@@ -31,20 +31,19 @@ for(var j = 1; j < GWevents.length; j++) { //j = 1 since j = 0 already in dropdo
     select.insertBefore(option,select.lastChild);
 }
 
+// Adding "All Events" optgroup to dropdown menu:
+// Citation: https://www.w3schools.com/jsref/dom_obj_optgroup.asp
+var optgroup = document.createElement("OPTGROUP");
+optgroup.setAttribute("label", "All Events");
+// optgroup.appendChild(select.options[numTopEvents])
+select.insertBefore(optgroup, select.options[numTopEvents]);
+
 //=============================================================================//
 // ------------------------------- Time Arrays ------------------------------- //
 //=============================================================================//
 
-// // Set up time values
-// let NFixed = 140000 //rounded up number of indices for longest event (GW200105_162426 with f0 = 20 Hz)
-// let tFixed = new Float32Array(NFixed).fill(0); //probably can define with time steps instead of defining with zeros
-// tFixed[0] = 0; //fills t array with [0, deltat, 2*deltat, 3*deltat...]
-// for (let i = 1; i < NFixed; i++) {
-//     tFixed[i] = tFixed[i - 1] + 1/4096;
-// }
-
-// Plots have sampling rates of either 4096 or 8192.
-// Two time arrays, corresponding to each sample rate are created:
+// Plots have sampling rates of either 4096, 8192, or 16384.
+// Three time arrays, corresponding to each sample rate are created:
 
 // Sampling Rate = 4096:
 let NFixed4096 = 140000 //rounded up number of indices for longest event (GW200105_162426 with f0 = 20 Hz)
@@ -54,6 +53,7 @@ for (let i = 1; i < NFixed4096; i++) {
     tFixed4096[i] = tFixed4096[i - 1] + 1/4096;
 }
 
+// Sampling Rate = 8192:
 let NFixed8192 = 140000 //rounded up number of indices for longest event (GW200105_162426 with f0 = 20 Hz)
 let tFixed8192 = new Float32Array(NFixed8192).fill(0); //probably can define with time steps instead of defining with zeros
 tFixed8192[0] = 0; //fills t array with [0, deltat, 2*deltat, 3*deltat...]
@@ -61,6 +61,7 @@ for (let i = 1; i < NFixed8192; i++) {
     tFixed8192[i] = tFixed8192[i - 1] + 1/8192;
 }
 
+// Sampling Rate = 16384:
 let NFixed16384 = 140000 //rounded up number of indices for longest event (GW200105_162426 with f0 = 20 Hz)
 let tFixed16384 = new Float32Array(NFixed16384).fill(0); //probably can define with time steps instead of defining with zeros
 tFixed16384[0] = 0; //fills t array with [0, deltat, 2*deltat, 3*deltat...]
@@ -75,11 +76,16 @@ for (let i = 1; i < NFixed16384; i++) {
 function updateFunction(normalizedStrainData) {
 
     //----------------- Importing Data From GWevents.js ------------------- //
+    // var data = GWevents[selectGWEvent.selectedIndex].data;
+    // var eventName = GWevents[selectGWEvent.selectedIndex].name;
+    // var normalizedStrainData = new Float32Array(data);
+    // console.log({eventName});
+
+    //----------------- Importing Data From GWevents.js ------------------- //
     var data = GWevents[selectGWEvent.selectedIndex].data;
     var eventName = GWevents[selectGWEvent.selectedIndex].name;
     var normalizedStrainData = new Float32Array(data);
     console.log({eventName});
-    console.log(data.length);
     
     // ------------------------ Information Box ------------------------ //
     var numSigFigs = 3; //rounds all values to this number of significant figures
@@ -144,21 +150,21 @@ function updateFunction(normalizedStrainData) {
     if (GWevents[selectGWEvent.selectedIndex].sampleRate == 4096) {
         var tFixed = tFixed4096;
         var sampleRate = GWevents[selectGWEvent.selectedIndex].sampleRate;
-        console.log(tFixed);
+        // console.log(tFixed);
     } else if (GWevents[selectGWEvent.selectedIndex].sampleRate == 8192){
         var tFixed = tFixed8192;
         var sampleRate = GWevents[selectGWEvent.selectedIndex].sampleRate;
-        console.log(tFixed);
+        // console.log(tFixed);
     } else if (GWevents[selectGWEvent.selectedIndex].sampleRate == 16384){
         var tFixed = tFixed16384;
         var sampleRate = GWevents[selectGWEvent.selectedIndex].sampleRate;
-        console.log(tFixed);
+        // console.log(tFixed);
     }
 
     // ----------------------------- Plotting ----------------------------- //
     // ----------------------- Strain vs. Time Plot ----------------------- //
     let layout0 = {
-        title: {text: 'Strain vs. Time', font: {family: 'Times New Roman', size: 32, color: 'white'}},
+        title: {text: 'Normalized Strain vs. Time', font: {family: 'Times New Roman', size: 32, color: 'white'}},
         xaxis: {
             title: {
                 text: 'Time (sec)',

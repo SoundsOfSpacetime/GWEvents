@@ -80,6 +80,11 @@ a:visited {
   margin-right: auto;
   width: 60%;
 }
+
+optgroup {
+  color: black;
+  background-color: white; 
+  }
 /* ------------------------------ Buttons ------------------------------- */
 
 .button {
