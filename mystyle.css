@@ -68,7 +68,7 @@ a:visited {
   color: white;
   padding: 10px 15px;
   border: none;
-  width: 170px;
+  width: 180px;
   border-radius: 10px;
 }
 
@@ -93,7 +93,7 @@ optgroup {
   color: white;
   padding: 10px 15px;
   border: none;
-  width: 170px;
+  width: 180px;
   border-radius: 10px;
 }
 
@@ -156,7 +156,7 @@ optgroup {
 }
 
 /* Parameters */
-#mass1, #spin1x, #spin1y, #spin1z, #mass2, #spin2x, #spin2y, #spin2z, #rightAscension, #declination, #inclination, #psi, #luminosityDistance, #chi_eff, #totalMass, #geocentricGPSTime {
+#mass1, #spin1x, #spin1y, #spin1z, #mass2, #spin2x, #spin2y, #spin2z, #rightAscension, #declination, #inclination, #psi, #luminosityDistance, #chi_eff, #totalMass, #geocentricGPSTime, #initialFreq {
   display: inline; 
 }
 
