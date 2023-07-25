@@ -138,9 +138,13 @@ function updateFunction(normalizedStrainData) {
     var totalMass = GWevents[selectGWEvent.selectedIndex].totalMass;
     document.getElementById('totalMass').innerHTML = Number(totalMass.toPrecision(numSigFigs));
 
-    var geocentricGPSTime = GWevents[selectGWEvent.selectedIndex].geocentricGPSTime;
-    document.getElementById('geocentricGPSTime').innerHTML = geocentricGPSTime;
+    // var geocentricGPSTime = GWevents[selectGWEvent.selectedIndex].geocentricGPSTime;
+    // document.getElementById('geocentricGPSTime').innerHTML = geocentricGPSTime;
     // document.getElementById('geocentricGPSTime').innerHTML = Number(geocentricGPSTime.toPrecision(numSigFigs));
+
+    // Initial Frequency:
+    var initialFreq = GWevents[selectGWEvent.selectedIndex].initialFreq;
+    document.getElementById('initialFreq').innerHTML = Number(initialFreq.toPrecision(numSigFigs));
 
     // Event URL:
     var eventURL = GWevents[selectGWEvent.selectedIndex].url;
@@ -218,7 +222,7 @@ function updateFunction(normalizedStrainData) {
             width: 3,
             shape: 'spline', // Spline used to smooth curve between points
             smoothing: 1.3 // Smoothing value between 0 and 1
-          }
+            }
     };
 
     var config0 = {
