@@ -146,6 +146,11 @@ function updateFunction(normalizedStrainData) {
     var initialFreq = GWevents[selectGWEvent.selectedIndex].initialFreq;
     document.getElementById('initialFreq').innerHTML = Number(initialFreq.toPrecision(numSigFigs));
 
+
+    // Event Description:
+    var eventDescription = GWevents[selectGWEvent.selectedIndex].description;
+    document.getElementById('eventDescription').innerHTML = eventDescription;
+
     // Event URL:
     var eventURL = GWevents[selectGWEvent.selectedIndex].url;
     document.getElementById('infoURL').href = eventURL;
