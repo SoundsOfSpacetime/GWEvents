@@ -59,7 +59,7 @@ print("Maximum likelihood:",max_likelihood_val)
 print("")
 
 # Print variable output for Javascript file:
-print('event: "{}",'.format(event))
+print('name: "{}",'.format(event))
 
 print('description: "",')
 
@@ -110,6 +110,9 @@ print("luminosityDistance: ",luminosity_distance,",",sep='')
 
 chi_eff = data_arr["chi_eff"][max_val_index]
 print("chi_eff: ",chi_eff,",",sep='')
+
+totalMass = data_arr["total_mass"][max_val_index]
+print("totalMass: ",totalMass,",",sep='')
 
 print("geocentricGPSTime: ",gpstime_hdf5,",",sep='')
 
