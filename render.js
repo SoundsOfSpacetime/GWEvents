@@ -144,7 +144,7 @@ function updateFunction(normalizedStrainData) {
 
     // Initial Frequency:
     var initialFreq = GWevents[selectGWEvent.selectedIndex].initialFreq;
-    document.getElementById('initialFreq').innerHTML = Number(initialFreq.toPrecision(numSigFigs));
+    document.getElementById('initialFreq').innerHTML = Number(initialFreq.toFixed(1));
 
 
     // Event Description:
