@@ -74,7 +74,7 @@ for (let i = 1; i < NFixed16384; i++) {
 //=============================================================================//
 // This entire function updates every time a slider is changed
 function updateFunction(normalizedStrainData) {
-
+    console.log
     //----------------- Importing Data From GWevents.js ------------------- //
     // var data = GWevents[selectGWEvent.selectedIndex].data;
     // var eventName = GWevents[selectGWEvent.selectedIndex].name;
@@ -173,13 +173,13 @@ function updateFunction(normalizedStrainData) {
     // ----------------------------- Plotting ----------------------------- //
     // ----------------------- Strain vs. Time Plot ----------------------- //
     let layout0 = {
-        title: {text: 'Normalized Strain vs. Time', font: {family: 'Times New Roman', size: 32, color: 'white'}},
+        title: {text: 'Normalized Strain vs. Time', font: {family: 'Helvetica', size: 32, color: 'white'}},
         xaxis: {
             title: {
                 text: 'Time (sec)',
-                font: {family: 'Times New Roman', size: 26,color: 'white'}
+                font: {family: 'Helvetica', size: 26,color: 'white'}
             },
-            tickfont: {family: 'Times New Roman', size: 18, color: 'white'},
+            tickfont: {family: 'Helvetica', size: 18, color: 'white'},
             color: 'white',
             rangemode: 'nonnegative', // does this work?
             showgrid: false,
@@ -188,9 +188,9 @@ function updateFunction(normalizedStrainData) {
         yaxis: {
             title: {
                 text: 'Normalized Strain',
-                font: {family: 'Times New Roman', size: 26,color: 'white'}
+                font: {family: 'Helvetica', size: 26,color: 'white'}
             },
-            tickfont: {family: 'Times New Roman', size: 18,color: 'white'},
+            tickfont: {family: 'Helvetica', size: 18,color: 'white'},
             color: 'white',
             showgrid: false,
             ticks: 'outside',
@@ -295,3 +295,6 @@ function closeNav() {
 
 // ------------------ Execute update Function for initial time ------------------ //
 updateFunction();
+
+// ------------------ Resize plot when window size is changed ------------------ //
+addEventListener("resize", (event) => {updateFunction()});
