@@ -61,13 +61,13 @@ for (let i = 1; i < NFixed8192; i++) {
     tFixed8192[i] = tFixed8192[i - 1] + 1/8192;
 }
 
-// Sampling Rate = 16384:
-let NFixed16384 = 140000 //rounded up number of indices for longest event (GW200105_162426 with f0 = 20 Hz)
-let tFixed16384 = new Float32Array(NFixed16384).fill(0); //probably can define with time steps instead of defining with zeros
-tFixed16384[0] = 0; //fills t array with [0, deltat, 2*deltat, 3*deltat...]
-for (let i = 1; i < NFixed16384; i++) {
-    tFixed16384[i] = tFixed16384[i - 1] + 1/16384;
-}
+// // Sampling Rate = 16384:
+// let NFixed16384 = 140000 //rounded up number of indices for longest event (GW200105_162426 with f0 = 20 Hz)
+// let tFixed16384 = new Float32Array(NFixed16384).fill(0); //probably can define with time steps instead of defining with zeros
+// tFixed16384[0] = 0; //fills t array with [0, deltat, 2*deltat, 3*deltat...]
+// for (let i = 1; i < NFixed16384; i++) {
+//     tFixed16384[i] = tFixed16384[i - 1] + 1/16384;
+// }
 
 //=============================================================================//
 // ----------------------------- Update function ----------------------------- //
