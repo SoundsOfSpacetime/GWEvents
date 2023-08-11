@@ -72,12 +72,11 @@
       </div></br>
 
       <div class="sidebarBox">
-        <h2><u>Resources</u></h2>
-        <div class="sideBarSubheading">
-          <a href="https://www.montclair.edu/physics-astronomy/" target="_blank">Montclair State University</a>
-          <a href="https://www.ligo.caltech.edu/" target="blank">LIGO Lab | Caltech | MIT</a>
-          <a href="https://gwosc.org/about/" target="_blank">About GWOSC</a>
-        </div>
+        <p>Plots are pre-generated in Python and exported to JavaScript. The parameter values corresponding to highest
+        log_likelihood of SEOBNRv4PHM or IMRPhenomXPHM posterior samples from The Gravitational Wave Open Science 
+        Center (GWOSC). Plots were constructed using LALSimulation's XLALSimInspiralChooseTDWaveform() waveform 
+        generator. The starting frequency for most event is set to 20 Hz, so the beginning of sounds may not 
+        be audible on some devices. Headphones and Google Chrome are recommended.</p>
       </div></br>
     </div>
 
@@ -99,14 +98,20 @@
     <!-- Draw Plot -->
     <div id="strainVsTimePlot" class="plot"></div><br>
 
-    <!-- Information Table -->
+    <!-- Information Table #1 -->
     <table class="infoTable">
+      <tr>
+        <th colspan="6">
+          <h2><div id="eventName"></div></h2>
+          <div id="eventDescription"></div>
+        </th>
+      </tr>
       <tr>
         <td>Mass #1</br>(Detector Frame)</td>
         <td>Mass #2</br>(Detector Frame)</td>
         <td>Total Mass</br>(Detector Frame)</td>
         <td>Luminosity</br>Distance</td>
-        <td>χ<sub>eff</sub></td>
+        <td>Redshift</td>
         <td>Initial Frequency</td>
       </tr>
       <tr>
@@ -114,26 +119,39 @@
         <td><div id="mass2"></div> M<sub>☉</sub></td>
         <td><div id="totalMass"></div> M<sub>☉</sub></td>
         <td><div id="luminosityDistance"></div> Mpc</td>
-        <td><div id="chi_eff"></div></td>
+        <td><div id="redshift"></div></td>
         <td><div id="initialFreq"></div> Hz</td>
       </tr>
+    </table></br>
+
+    <!-- Information Table #2 -->
+    <table class="infoTable">
       <tr>
-        <!-- Information Link -->
+        <td>Mass #1</br>(Source Frame)</td>
+        <td>Mass #2</br>(Source Frame)</td>
+        <td>Total Mass</br>(Source Frame)</td>
+        <td>Mass Ratio</br>(Source Frame)</td>
+        <td>Spin #1</td>
+        <td>Spin #2</td>
+      </tr>
+      <tr>
+        <td><div id="mass1source"></div> M<sub>☉</sub></td>
+        <td><div id="mass2source"></div> M<sub>☉</sub></td>
+        <td><div id="totalMassSource"></div> M<sub>☉</sub></td>
+        <td><div id="massRatio"></div></td>
+        <td><div id="spin1"></div></td>
+        <td><div id="spin2"></div></td>
+      </tr>
+
+      <!-- Information Link -->
+      <tr>
         <th colspan="6">
-          <div id="eventDescription"></div>
           † indicates a Top Event</br>
           * indicates an event with an initial frequency less than 20 Hz, and may not be audible </br>
           <a href="https://www.gw-openscience.org/eventapi/html/GWTC-3-confident/GW191113_071753/v1" id="infoURL" target="_blank">Click to View More Information About This Event</a>
         </th>
       </tr>
     </table></br>
-
-    <!-- Description Box -->
-    <div id="descriptionBox">
-      Plots are pre-generated in Python and exported to JavaScript. The parameter values corresponding to highest log_likelihood of SEOBNRv4PHM or IMRPhenomXPHM posterior samples from <a href="https://www.gw-openscience.org/eventapi/html/allevents/" target="_blank">The Gravitational Wave 
-      Open Science Center (GWOSC)</a>. Plots were constructed using <a href="https://lscsoft.docs.ligo.org/lalsuite/lalsimulation/_l_a_l_sim_inspiral_8h.html#a51352d49a58e543e07ebb6be87fc80e7" target="_blank">LALSimulation's 
-      XLALSimInspiralChooseTDWaveform() waveform generator</a>. The starting frequency for most event is set to 20 Hz, so the beginning of sounds may not be audible on some devices. Headphones and Google Chrome are recommended.
-    </div><br>
              
     <!-- Bottom Images -->
     <img src="logo.png" class="image" alt="MSU NSF & LSC Logos">

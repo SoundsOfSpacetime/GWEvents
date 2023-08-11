@@ -90,62 +90,63 @@ function updateFunction(normalizedStrainData) {
     // ------------------------ Information Box ------------------------ //
     var numSigFigs = 3; //rounds all values to this number of significant figures
 
-    // Mass #1:
+    // Event Name:
+    var eventName = GWevents[selectGWEvent.selectedIndex].name;
+    document.getElementById('eventName').innerHTML = eventName;
+
+    // Mass #1 (Detector Frame):
     var mass1 = GWevents[selectGWEvent.selectedIndex].mass1;
     document.getElementById('mass1').innerHTML = Number(mass1.toPrecision(numSigFigs));
 
-    // var spin1x = GWevents[selectGWEvent.selectedIndex].spin1x;
-    // document.getElementById('spin1x').innerHTML = Number(spin1x.toPrecision(numSigFigs));
-
-    // var spin1y = GWevents[selectGWEvent.selectedIndex].spin1y;
-    // document.getElementById('spin1y').innerHTML = Number(spin1y.toPrecision(numSigFigs));
-
-    // var spin1z = GWevents[selectGWEvent.selectedIndex].spin1z;
-    // document.getElementById('spin1z').innerHTML = Number(spin1z.toPrecision(numSigFigs));
-
-    // Mass #2:
+    // Mass #2 (Detector Frame):
     var mass2 = GWevents[selectGWEvent.selectedIndex].mass2;
     document.getElementById('mass2').innerHTML = Number(mass2.toPrecision(numSigFigs));
 
-    // var spin2x = GWevents[selectGWEvent.selectedIndex].spin2x;
-    // document.getElementById('spin2x').innerHTML = Number(spin2x.toPrecision(numSigFigs));
-
-    // var spin2y = GWevents[selectGWEvent.selectedIndex].spin2y;
-    // document.getElementById('spin2y').innerHTML = Number(spin2y.toPrecision(numSigFigs));
-
-    // var spin2z = GWevents[selectGWEvent.selectedIndex].spin2z;
-    // document.getElementById('spin2z').innerHTML = Number(spin2z.toPrecision(numSigFigs));
-
-    // Other Parameters:
-    // var rightAscension = GWevents[selectGWEvent.selectedIndex].rightAscension;
-    // document.getElementById('rightAscension').innerHTML = Number(rightAscension.toPrecision(numSigFigs));
-
-    // var declination = GWevents[selectGWEvent.selectedIndex].declination;
-    // document.getElementById('declination').innerHTML = Number(declination.toPrecision(numSigFigs));
-
-    // var inclination = GWevents[selectGWEvent.selectedIndex].inclination;
-    // document.getElementById('inclination').innerHTML = Number(inclination.toPrecision(numSigFigs));
-
-    // var psi = GWevents[selectGWEvent.selectedIndex].psi;
-    // document.getElementById('psi').innerHTML = Number(psi.toPrecision(numSigFigs));
-
-    var luminosityDistance = GWevents[selectGWEvent.selectedIndex].luminosityDistance;
-    document.getElementById('luminosityDistance').innerHTML = Number(luminosityDistance.toPrecision(numSigFigs));
-
-    var chi_eff = GWevents[selectGWEvent.selectedIndex].chi_eff;
-    document.getElementById('chi_eff').innerHTML = Number(chi_eff.toPrecision(numSigFigs));
-
+    // Total Mass (Detector Frame):
     var totalMass = GWevents[selectGWEvent.selectedIndex].totalMass;
     document.getElementById('totalMass').innerHTML = Number(totalMass.toPrecision(numSigFigs));
 
-    // var geocentricGPSTime = GWevents[selectGWEvent.selectedIndex].geocentricGPSTime;
-    // document.getElementById('geocentricGPSTime').innerHTML = geocentricGPSTime;
-    // document.getElementById('geocentricGPSTime').innerHTML = Number(geocentricGPSTime.toPrecision(numSigFigs));
+    // Luminosity Distance:
+    var luminosityDistance = GWevents[selectGWEvent.selectedIndex].luminosityDistance;
+    document.getElementById('luminosityDistance').innerHTML = Number(luminosityDistance.toPrecision(numSigFigs));
+
+    // Redshift:
+    var redshift = GWevents[selectGWEvent.selectedIndex].redshift;
+    document.getElementById('redshift').innerHTML = Number(redshift.toPrecision(numSigFigs));
 
     // Initial Frequency:
     var initialFreq = GWevents[selectGWEvent.selectedIndex].initialFreq;
     document.getElementById('initialFreq').innerHTML = Number(initialFreq.toFixed(1));
 
+    // Mass #1 (Source Frame):
+    var mass1source = GWevents[selectGWEvent.selectedIndex].mass1source;
+    document.getElementById('mass1source').innerHTML = Number(mass1source.toPrecision(numSigFigs));
+
+    // Mass #2 (Source Frame):
+    var mass2source = GWevents[selectGWEvent.selectedIndex].mass2source;
+    document.getElementById('mass2source').innerHTML = Number(mass2source.toPrecision(numSigFigs));
+
+    // Total Mass (Source Frame):
+    var totalMassSource = GWevents[selectGWEvent.selectedIndex].totalMassSource;
+    document.getElementById('totalMassSource').innerHTML = Number(totalMassSource.toPrecision(numSigFigs));
+
+    // Mass Ratio (Source Frame):
+    var massRatio = mass2source / mass1source;
+    document.getElementById('massRatio').innerHTML = Number(massRatio.toPrecision(numSigFigs));
+
+    // Spin #1:
+    var spin1x = GWevents[selectGWEvent.selectedIndex].spin1x;
+    var spin1y = GWevents[selectGWEvent.selectedIndex].spin1y;
+    var spin1z = GWevents[selectGWEvent.selectedIndex].spin1z;
+    var spin1 = Math.sqrt(Math.pow(spin1x,2)+Math.pow(spin1y,2)+Math.pow(spin1z,2))
+    document.getElementById('spin1').innerHTML = Number(spin1.toPrecision(numSigFigs));
+
+    // Spin #2:
+    var spin2x = GWevents[selectGWEvent.selectedIndex].spin2x;
+    var spin2y = GWevents[selectGWEvent.selectedIndex].spin2y;
+    var spin2z = GWevents[selectGWEvent.selectedIndex].spin2z;
+    var spin2 = Math.sqrt(Math.pow(spin2x,2)+Math.pow(spin2y,2)+Math.pow(spin2z,2))
+    document.getElementById('spin2').innerHTML = Number(spin2.toPrecision(numSigFigs));
 
     // Event Description:
     var eventDescription = GWevents[selectGWEvent.selectedIndex].description;

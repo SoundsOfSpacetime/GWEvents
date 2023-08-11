@@ -1,3 +1,4 @@
+#!/usr/local/bin/python3
 # Code written by Kevin Johansmeyer
 
 import h5py

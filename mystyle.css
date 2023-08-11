@@ -158,7 +158,11 @@ optgroup {
 }
 
 /* Parameters */
-#mass1, #spin1x, #spin1y, #spin1z, #mass2, #spin2x, #spin2y, #spin2z, #rightAscension, #declination, #inclination, #psi, #luminosityDistance, #chi_eff, #totalMass, #geocentricGPSTime, #initialFreq {
+#mass1, #spin1, #spin1x, #spin1y, #spin1z, 
+#mass2, #spin2, #spin2x, #spin2y, #spin2z,
+#totalMass, #mass1source, #mass2source, #totalMassSource, #massRatio,
+#rightAscension, #declination, #inclination, #psi, 
+#luminosityDistance, #redshift, #chi_eff, #geocentricGPSTime, #initialFreq {
   display: inline; 
 }
 
