@@ -11,11 +11,6 @@
 
 'use strict'
 
-// Timer needed in order to make page load before alert shows:
-function headphoneAlert() {
-    window.alert("Headphones are recommended for the best user experience. Cellphone and laptop speakers may not be able to produce low frequencies.");
-}
-
 //=============================================================================//
 // ------------------------- Populate Dropdown Menu -------------------------- //
 //=============================================================================//
@@ -160,11 +155,9 @@ function updateFunction(normalizedStrainData) {
     if (currentSelection.sampleRate == 4096) {
         var tFixed = tFixed4096;
         var sampleRate = currentSelection.sampleRate;
-        // console.log(tFixed);
     } else if (currentSelection.sampleRate == 8192){
         var tFixed = tFixed8192;
         var sampleRate = currentSelection.sampleRate;
-        // console.log(tFixed);
     } 
 
     // ----------------------------- Plotting ----------------------------- //
@@ -284,7 +277,7 @@ function openNav() {
     document.getElementById("mySideNav").style.left = "0px";
 }
 
-/* Set the width of the side navigation to 0 */
+// Set the width of the side navigation to 0
 function closeNav() {
     document.getElementById("mySideNav").style.left = "-500px";
 }
