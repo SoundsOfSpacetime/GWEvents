@@ -37,8 +37,9 @@ body {
 
 p {
   color: white;
-  line-height: 100%;
-  font-size: 11px;
+  line-height: 120%;
+  font-size: 12px;
+  font-family: "Lucida Handwriting","Arvo";
 }
 
 /* unvisited link */
