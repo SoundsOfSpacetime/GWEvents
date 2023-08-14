@@ -20,33 +20,41 @@ function headphoneAlert() {
 // ------------------------- Populate Dropdown Menu -------------------------- //
 //=============================================================================//
 
-// Original working dropdown menu:
-// Citation: https://1bestcsharp.blogspot.com/2017/03/javascript-populate-select-option-from-array.html
+// Create Dropdown Menu:
 var select = document.getElementById("selectGWEvent");
-for(var j = 1; j < GWevents.length; j++) { //j = 1 since j = 0 already in dropdown by default
-    var option = document.createElement("OPTION"),
-        txt = document.createTextNode(GWevents[j].name);
-    option.appendChild(txt);
-    option.setAttribute("value",GWevents[j].name);
-    select.insertBefore(option,select.lastChild);
+
+// Populate TopGWEvents:
+for(var i = 1; i < TopGWEvents.length; i++) {
+  var option = document.createElement("OPTION"),
+      txt = document.createTextNode(TopGWEvents[i]);
+  option.appendChild(txt);
+  option.setAttribute("value",TopGWEvents[i]);
+  select.insertBefore(option,select.lastChild);
 }
 
-// Adding "All Events" optgroup to dropdown menu:
-// Citation: https://www.w3schools.com/jsref/dom_obj_optgroup.asp
+// Populate GWEvents:
+for(var i = 0; i < GWEvents.length; i++) {
+  var option = document.createElement("OPTION"),
+      txt = document.createTextNode(GWEvents[i].name);
+  option.appendChild(txt);
+  option.setAttribute("value",GWEvents[i].name);
+  select.insertBefore(option,select.lastChild);
+}
+
+// Adding "All Events" Optgroup:
 var optgroup = document.createElement("OPTGROUP");
 optgroup.setAttribute("label", "All Events");
-// optgroup.appendChild(select.options[numTopEvents])
-select.insertBefore(optgroup, select.options[numTopEvents]);
+select.insertBefore(optgroup, select.options[TopGWEvents.length]);
 
 //=============================================================================//
 // ------------------------------- Time Arrays ------------------------------- //
 //=============================================================================//
 
-// Plots have sampling rates of either 4096, 8192, or 16384.
-// Three time arrays, corresponding to each sample rate are created:
+// Plots have sampling rates of either 4096 or 8192.
+// Two time arrays, corresponding to each sample rate are created:
 
 // Sampling Rate = 4096:
-let NFixed4096 = 140000 //rounded up number of indices for longest event (GW200105_162426 with f0 = 20 Hz)
+let NFixed4096 = 200000 //rounded up number of indices for longest event
 let tFixed4096 = new Float32Array(NFixed4096).fill(0); //probably can define with time steps instead of defining with zeros
 tFixed4096[0] = 0; //fills t array with [0, deltat, 2*deltat, 3*deltat...]
 for (let i = 1; i < NFixed4096; i++) {
@@ -54,122 +62,110 @@ for (let i = 1; i < NFixed4096; i++) {
 }
 
 // Sampling Rate = 8192:
-let NFixed8192 = 140000 //rounded up number of indices for longest event (GW200105_162426 with f0 = 20 Hz)
+let NFixed8192 = 200000 //rounded up number of indices for longest event
 let tFixed8192 = new Float32Array(NFixed8192).fill(0); //probably can define with time steps instead of defining with zeros
 tFixed8192[0] = 0; //fills t array with [0, deltat, 2*deltat, 3*deltat...]
 for (let i = 1; i < NFixed8192; i++) {
     tFixed8192[i] = tFixed8192[i - 1] + 1/8192;
 }
 
-// // Sampling Rate = 16384:
-// let NFixed16384 = 140000 //rounded up number of indices for longest event (GW200105_162426 with f0 = 20 Hz)
-// let tFixed16384 = new Float32Array(NFixed16384).fill(0); //probably can define with time steps instead of defining with zeros
-// tFixed16384[0] = 0; //fills t array with [0, deltat, 2*deltat, 3*deltat...]
-// for (let i = 1; i < NFixed16384; i++) {
-//     tFixed16384[i] = tFixed16384[i - 1] + 1/16384;
-// }
-
 //=============================================================================//
 // ----------------------------- Update function ----------------------------- //
 //=============================================================================//
-// This entire function updates every time a slider is changed
+// This entire function updates every time the dropdown is changed
 function updateFunction(normalizedStrainData) {
-    console.log
     //----------------- Importing Data From GWevents.js ------------------- //
-    // var data = GWevents[selectGWEvent.selectedIndex].data;
-    // var eventName = GWevents[selectGWEvent.selectedIndex].name;
-    // var normalizedStrainData = new Float32Array(data);
-    // console.log({eventName});
 
-    //----------------- Importing Data From GWevents.js ------------------- //
-    var data = GWevents[selectGWEvent.selectedIndex].data;
-    var eventName = GWevents[selectGWEvent.selectedIndex].name;
+    // Gets currently selected dropdown event name text:
+    var textFromDropDown = document.getElementById("selectGWEvent");
+    var currentText = textFromDropDown.options[textFromDropDown.selectedIndex].text;
+    var currentSelection = GWEvents.find(item => item.name === currentText);
+
+    // Import Data From Current Selection:
+    var data = currentSelection.data;
     var normalizedStrainData = new Float32Array(data);
-    console.log({eventName});
     
     // ------------------------ Information Box ------------------------ //
     var numSigFigs = 3; //rounds all values to this number of significant figures
 
     // Event Name:
-    var eventName = GWevents[selectGWEvent.selectedIndex].name;
+    var eventName = currentSelection.name;
     document.getElementById('eventName').innerHTML = eventName;
+    console.log("Expand below to see all information and values for currently selected event:")
+    console.log({currentSelection});
 
     // Mass #1 (Detector Frame):
-    var mass1 = GWevents[selectGWEvent.selectedIndex].mass1;
+    var mass1 = currentSelection.mass1;
     document.getElementById('mass1').innerHTML = Number(mass1.toPrecision(numSigFigs));
 
     // Mass #2 (Detector Frame):
-    var mass2 = GWevents[selectGWEvent.selectedIndex].mass2;
+    var mass2 = currentSelection.mass2;
     document.getElementById('mass2').innerHTML = Number(mass2.toPrecision(numSigFigs));
 
     // Total Mass (Detector Frame):
-    var totalMass = GWevents[selectGWEvent.selectedIndex].totalMass;
+    var totalMass = currentSelection.totalMass;
     document.getElementById('totalMass').innerHTML = Number(totalMass.toPrecision(numSigFigs));
 
     // Luminosity Distance:
-    var luminosityDistance = GWevents[selectGWEvent.selectedIndex].luminosityDistance;
+    var luminosityDistance = currentSelection.luminosityDistance;
     document.getElementById('luminosityDistance').innerHTML = Number(luminosityDistance.toPrecision(numSigFigs));
 
     // Redshift:
-    var redshift = GWevents[selectGWEvent.selectedIndex].redshift;
+    var redshift = currentSelection.redshift;
     document.getElementById('redshift').innerHTML = Number(redshift.toPrecision(numSigFigs));
 
     // Initial Frequency:
-    var initialFreq = GWevents[selectGWEvent.selectedIndex].initialFreq;
+    var initialFreq = currentSelection.initialFreq;
     document.getElementById('initialFreq').innerHTML = Number(initialFreq.toFixed(1));
 
     // Mass #1 (Source Frame):
-    var mass1source = GWevents[selectGWEvent.selectedIndex].mass1source;
+    var mass1source = currentSelection.mass1source;
     document.getElementById('mass1source').innerHTML = Number(mass1source.toPrecision(numSigFigs));
 
     // Mass #2 (Source Frame):
-    var mass2source = GWevents[selectGWEvent.selectedIndex].mass2source;
+    var mass2source = currentSelection.mass2source;
     document.getElementById('mass2source').innerHTML = Number(mass2source.toPrecision(numSigFigs));
 
     // Total Mass (Source Frame):
-    var totalMassSource = GWevents[selectGWEvent.selectedIndex].totalMassSource;
+    var totalMassSource = currentSelection.totalMassSource;
     document.getElementById('totalMassSource').innerHTML = Number(totalMassSource.toPrecision(numSigFigs));
 
     // Mass Ratio (Source Frame):
     var massRatio = mass2source / mass1source;
     document.getElementById('massRatio').innerHTML = Number(massRatio.toPrecision(numSigFigs));
 
-    // Spin #1:
-    var spin1x = GWevents[selectGWEvent.selectedIndex].spin1x;
-    var spin1y = GWevents[selectGWEvent.selectedIndex].spin1y;
-    var spin1z = GWevents[selectGWEvent.selectedIndex].spin1z;
+    // Spin #1x:
+    var spin1x = currentSelection.spin1x;
+    var spin1y = currentSelection.spin1y;
+    var spin1z = currentSelection.spin1z;
     var spin1 = Math.sqrt(Math.pow(spin1x,2)+Math.pow(spin1y,2)+Math.pow(spin1z,2))
     document.getElementById('spin1').innerHTML = Number(spin1.toPrecision(numSigFigs));
 
     // Spin #2:
-    var spin2x = GWevents[selectGWEvent.selectedIndex].spin2x;
-    var spin2y = GWevents[selectGWEvent.selectedIndex].spin2y;
-    var spin2z = GWevents[selectGWEvent.selectedIndex].spin2z;
+    var spin2x = currentSelection.spin2x;
+    var spin2y = currentSelection.spin2y;
+    var spin2z = currentSelection.spin2z;
     var spin2 = Math.sqrt(Math.pow(spin2x,2)+Math.pow(spin2y,2)+Math.pow(spin2z,2))
     document.getElementById('spin2').innerHTML = Number(spin2.toPrecision(numSigFigs));
 
     // Event Description:
-    var eventDescription = GWevents[selectGWEvent.selectedIndex].description;
+    var eventDescription = currentSelection.description;
     document.getElementById('eventDescription').innerHTML = eventDescription;
 
     // Event URL:
-    var eventURL = GWevents[selectGWEvent.selectedIndex].url;
+    var eventURL = currentSelection.url;
     document.getElementById('infoURL').href = eventURL;
 
     // ------------ Choosing Correct Time Array and Sampling Rate --------- //
-    if (GWevents[selectGWEvent.selectedIndex].sampleRate == 4096) {
+    if (currentSelection.sampleRate == 4096) {
         var tFixed = tFixed4096;
-        var sampleRate = GWevents[selectGWEvent.selectedIndex].sampleRate;
+        var sampleRate = currentSelection.sampleRate;
         // console.log(tFixed);
-    } else if (GWevents[selectGWEvent.selectedIndex].sampleRate == 8192){
+    } else if (currentSelection.sampleRate == 8192){
         var tFixed = tFixed8192;
-        var sampleRate = GWevents[selectGWEvent.selectedIndex].sampleRate;
+        var sampleRate = currentSelection.sampleRate;
         // console.log(tFixed);
-    } else if (GWevents[selectGWEvent.selectedIndex].sampleRate == 16384){
-        var tFixed = tFixed16384;
-        var sampleRate = GWevents[selectGWEvent.selectedIndex].sampleRate;
-        // console.log(tFixed);
-    }
+    } 
 
     // ----------------------------- Plotting ----------------------------- //
     // ----------------------- Strain vs. Time Plot ----------------------- //
@@ -250,7 +246,6 @@ function updateFunction(normalizedStrainData) {
     document.getElementById("startAudioBtn").onclick = function() {playAudio()};
     
     // Citation: wavJS - https://github.com/taweisse/wavJS
-    // const sampleRate = 4096;
 
     function startAudio({ array }) {
         let wav = new WAV(sampleRate,1); //1 = mono, 2 = stereo
