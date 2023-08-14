@@ -1,5 +1,12 @@
-// WAV file generation, download & playback library.
+//=============================================================================//
+// --------------------------------- Header ---------------------------------- //
+//=============================================================================//
+//                                 WAV.js                                      //
+//                          Created by Todd Weisse                             //
+//                    https://github.com/taweisse/wavJS                        //
+//=============================================================================//
 
+// WAV file generation, download & playback library.
 'use strict'
 
 function WAV(sampleRate, numChannels) {

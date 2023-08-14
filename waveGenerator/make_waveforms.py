@@ -1,5 +1,10 @@
-# Code written by Dr. Shaon Ghosh
-# https://github.com/shaonghosh/lalsuite_examples
+# =============================================================================//
+# --------------------------------- Header ----------------------------------- //
+# =============================================================================//
+#                             make_waveforms.py                                //
+#                        Created by Dr. Shaon Ghosh                            //
+#              https://github.com/shaonghosh/lalsuite_examples                 //
+# =============================================================================//
 
 import lal
 import lalsimulation as lalsim

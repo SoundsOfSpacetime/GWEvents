@@ -1,5 +1,14 @@
 #!/usr/local/bin/python3
-# Code written by Kevin Johansmeyer
+# =============================================================================//
+# --------------------------------- Header ----------------------------------- //
+# =============================================================================//
+#                         HDF5MaximumLikelihood.py                             //
+#                       Created by Kevin Johansmeyer                           //
+#                     Email: kevinjohansmeyer@gmail.com                        //
+#                  University: Montclair State University                      //
+#                         Advisor: Dr. Marc Favata                             //
+#                         www.soundsofspacetime.org                            //
+# =============================================================================//
 
 import h5py
 import numpy as np
@@ -18,7 +27,6 @@ initialFreq = 20
 # Sample Rate Information (choose one):
 sampleRate = 4096
 # sampleRate = 8192
-# sampleRate = 16384
 
 # Waveform Generator Approximation (choose one):
     
