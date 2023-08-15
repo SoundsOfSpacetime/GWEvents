@@ -2,7 +2,7 @@
 // --------------------------------- Header ---------------------------------- //
 //=============================================================================//
 //                           Audio-Resampler                                   //
-//                         Created by notthetup                                //
+//                    Created by Rafael da Silva Rocha                         //
 //              https://www.npmjs.com/package/audio-resampler                  //
 //                 https://github.com/notthetup/resampler                      //
 //=============================================================================//
