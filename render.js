@@ -49,7 +49,7 @@ select.insertBefore(optgroup, select.options[TopGWEvents.length]);
 // Two time arrays, corresponding to each sample rate are created:
 
 // Sampling Rate = 4096:
-let NFixed4096 = 200000 //rounded up number of indices for longest event
+let NFixed4096 = 200000; //rounded up number of indices for longest event
 let tFixed4096 = new Float32Array(NFixed4096).fill(0); //probably can define with time steps instead of defining with zeros
 tFixed4096[0] = 0; //fills t array with [0, deltat, 2*deltat, 3*deltat...]
 for (let i = 1; i < NFixed4096; i++) {
@@ -57,7 +57,7 @@ for (let i = 1; i < NFixed4096; i++) {
 }
 
 // Sampling Rate = 8192:
-let NFixed8192 = 200000 //rounded up number of indices for longest event
+let NFixed8192 = 200000; //rounded up number of indices for longest event
 let tFixed8192 = new Float32Array(NFixed8192).fill(0); //probably can define with time steps instead of defining with zeros
 tFixed8192[0] = 0; //fills t array with [0, deltat, 2*deltat, 3*deltat...]
 for (let i = 1; i < NFixed8192; i++) {
@@ -238,10 +238,14 @@ function updateFunction(normalizedStrainData) {
     // ----------------------------- Audio ----------------------------- //
     document.getElementById("startAudioBtn").onclick = function() {playAudio()};
     
-    // Citation: wavJS - https://github.com/taweisse/wavJS
+    // Citation: audio-resampler - https://www.npmjs.com/package/audio-resampler
+    let newSampleRate = 44100;
+    let resampledData = waveResampler.resample(normalizedStrainData, sampleRate, newSampleRate);
+    let newNormalizedStrainData = new Float32Array(resampledData);
 
+    // Citation: wavJS - https://github.com/taweisse/wavJS
     function startAudio({ array }) {
-        let wav = new WAV(sampleRate,1); //1 = mono, 2 = stereo
+        let wav = new WAV(newSampleRate,1); //1 = mono, 2 = stereo
         wav.addSamples([array]);
         wav.play();
 
@@ -253,20 +257,20 @@ function updateFunction(normalizedStrainData) {
         }
 
     function playAudio() {
-        startAudio({ array: normalizedStrainData, sampleRate });
+        startAudio({ array: newNormalizedStrainData, newSampleRate });
     }
 
     // Download Audio
     document.getElementById("downloadAudio").onclick = function() {prepareDownload()};
 
     function downloadAudio({ array }) {
-        let wav = new WAV(sampleRate,1); //1 = mono, 2 = stereo
+        let wav = new WAV(newSampleRate,1); //1 = mono, 2 = stereo
         wav.addSamples([array]);
         wav.download(eventName+'.wav');
     }
     
     function prepareDownload() {
-        downloadAudio({ array: normalizedStrainData, sampleRate });
+        downloadAudio({ array: newNormalizedStrainData, newSampleRate });
     }
 
 } // ----------------------- End of Update Function ---------------------- //
